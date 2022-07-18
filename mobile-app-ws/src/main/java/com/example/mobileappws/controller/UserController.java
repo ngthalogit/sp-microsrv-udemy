@@ -2,6 +2,7 @@ package com.example.mobileappws.controller;
 
 
 import com.example.mobileappws.model.request.UserRequest;
+import com.example.mobileappws.model.request.UserUpdate;
 import com.example.mobileappws.model.response.UserResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,6 +19,7 @@ import java.util.UUID;
 @RequestMapping("/users")
 public class UserController {
     private Map<String, UserResponse> users;
+
     @GetMapping()
     public String getUsers(@RequestParam(value = "page", defaultValue = "1", required = false) int page,
                            @RequestParam(value = "limit", defaultValue = "50", required = false) int limit,
@@ -65,14 +67,27 @@ public class UserController {
         return new ResponseEntity<UserResponse>(userResponse, HttpStatus.CREATED);
     }
 
-    @PutMapping
-    public String updateUser() {
-        return "update use was called";
+    @PutMapping(value = "/{userId}",
+            consumes = {
+                    MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_JSON_VALUE
+            },
+            produces = {
+                    MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_JSON_VALUE
+            })
+    public UserResponse updateUser(@PathVariable("userId") String userId,
+                                   @Valid @RequestBody UserUpdate userUpdate) {
+        UserResponse existingUser = users.get(userId);
+        existingUser.setFirstName(userUpdate.getFirstName());
+        existingUser.setLastName(userUpdate.getLastName());
+        return existingUser;
     }
 
-    @DeleteMapping
-    public String deleteUser() {
-        return "delete user was called";
+    @DeleteMapping("{userId}")
+    public ResponseEntity<Void> deleteUser(@PathVariable("userId") String userId) {
+        users.remove(userId);
+        return ResponseEntity.noContent().build();
     }
 
 }

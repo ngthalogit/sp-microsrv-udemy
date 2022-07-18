@@ -1,21 +1,19 @@
-package com.example.mobileappws.model;
+package com.example.mobileappws.model.response;
 
 import lombok.Data;
 
 @Data
-public class User {
+public class UserResponse {
+
     private String userId;
     private String firstName;
     private String lastName;
-    private String email;
 
-    public User() {
-    }
+    public UserResponse() {}
 
-    public User(String userId, String firstName, String lastName, String email) {
+    public  UserResponse(String userId, String firstName, String lastName) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
     }
 }

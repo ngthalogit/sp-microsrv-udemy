@@ -7,15 +7,24 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="AccountManagementService" />
         <module name="mobile-app-ws" />
+        <module name="AppDiscoveryService" />
+        <module name="ApiGateWay" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="AccountManagementService" target="17" />
+      <module name="ApiGateWay" target="17" />
+      <module name="AppDiscoveryService" target="17" />
       <module name="mobile-app-ws" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="AccountManagementService" options="-parameters" />
+      <module name="ApiGateWay" options="-parameters" />
+      <module name="AppDiscoveryService" options="-parameters" />
       <module name="mobile-app-ws" options="-parameters" />
     </option>
   </component>

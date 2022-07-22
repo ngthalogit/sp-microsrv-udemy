@@ -10,9 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 
 @RestController
@@ -24,9 +22,9 @@ public class UserController {
     public String getUsers(@RequestParam(value = "page", defaultValue = "1", required = false) int page,
                            @RequestParam(value = "limit", defaultValue = "50", required = false) int limit,
                            @RequestParam(value = "sort", defaultValue = "desc", required = false) String sort) {
+
         return "get users was called with page = %d, limit = %d, and sort = %s".formatted(page, limit, sort);
     }
-
     @GetMapping(value = "{userId}",
             produces = {
                     MediaType.APPLICATION_XML_VALUE,

@@ -4,6 +4,9 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/mobile-app-ws/pom.xml" />
+        <option value="$PROJECT_DIR$/AppDiscoveryService/pom.xml" />
+        <option value="$PROJECT_DIR$/AccountManagementService/pom.xml" />
+        <option value="$PROJECT_DIR$/ApiGateWay/pom.xml" />
       </list>
     </option>
   </component>
